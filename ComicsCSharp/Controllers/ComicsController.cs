@@ -7,19 +7,26 @@ namespace ComicsCSharp.Controllers
     public class ComicsController : Controller
     {
 
-        private static List<Comic> comics = new List<Comic>();
-
         public IActionResult Index()
         {
-            ViewBag.comics = comics;
+            ViewBag.comics = ComicsData.GetAll();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Add(string title, int issueNumber)
+        public IActionResult Add(Comic comic)
         {
-            var comic = new Comic(title, issueNumber);
-            comics.Add(comic);
+            ComicsData.Add(comic);
+            return Redirect("/Comics");
+        }
+
+        [HttpPost]
+        public IActionResult Remove(int[] removedComics)
+        {
+            foreach(int comicId in removedComics)
+            {
+                ComicsData.RemoveById(comicId);
+            }
             return Redirect("/Comics");
         }
     }
