@@ -13,6 +13,11 @@ namespace ComicsCSharp.Controllers
             return View();
         }
 
+        public IActionResult Add()
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Add(Comic comic)
         {
