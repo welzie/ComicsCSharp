@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using ComicsCSharp.Models;
+using ComicsCSharp.ViewModels;
 
 namespace ComicsCSharp.Controllers
 {
@@ -15,14 +16,21 @@ namespace ComicsCSharp.Controllers
 
         public IActionResult Add()
         {
-            return View();
+            return View(new AddComicViewModel());
         }
 
         [HttpPost]
-        public IActionResult Add(Comic comic)
+        public IActionResult Add(AddComicViewModel comicViewModel)
         {
-            ComicsData.Add(comic);
-            return Redirect("/Comics");
+            if (ModelState.IsValid)
+            {
+                Comic comic = new Comic(comicViewModel.Title, comicViewModel.IssueNumber);
+                ComicsData.Add(comic);
+                return Redirect("/Comics");
+            }
+            // Bad news, stuff is not right
+            // Stay, so the user can finish form
+            return View();
         }
 
         [HttpPost]

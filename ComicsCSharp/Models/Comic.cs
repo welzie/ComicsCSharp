@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 
+
 namespace ComicsCSharp.Models
 {
     public class Comic
     {
         public int ComicId { get; private set; }
         public string Title { get; set; }
-        public int IssueNumber { get; set; }
+        public int? IssueNumber { get; set; }
         private static int nextId = 0;
+        public int? Grade { get; set; }
 
         public Comic()
         {
@@ -15,7 +17,7 @@ namespace ComicsCSharp.Models
             nextId++;
         }
 
-        public Comic(string title, int issueNumber)
+        public Comic(string title, int? issueNumber)
         {
             this.Title = title;
             this.IssueNumber = issueNumber;

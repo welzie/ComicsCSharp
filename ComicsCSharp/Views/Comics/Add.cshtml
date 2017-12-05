@@ -1,7 +1,14 @@
-﻿<h2>Add Comics</h2>
+﻿@model ComicsCSharp.ViewModels.AddComicViewModel
+<h2>Add Comics</h2>
+
+<div asp-validation-summary="All"></div>
 
 <form method="post" action="/Comics/add">
-    <label>Issue # <input type="number" size="3" name="issueNumber" /></label>
-    <label>Title <input type="text" name="title" /></label>
+    <label asp-for="IssueNumber"></label> <input asp-for="IssueNumber"/>
+    <label asp-for="Title"></label> <input asp-for="Title"/>
+    <select asp-for="Grade" asp-items="Model.SelectItems">
+        <option value="">*select one*</option>
+    </select>
+    
     <button>Add</button>
 </form>
