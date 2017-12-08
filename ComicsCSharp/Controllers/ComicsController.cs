@@ -25,12 +25,14 @@ namespace ComicsCSharp.Controllers
             if (ModelState.IsValid)
             {
                 Comic comic = new Comic(comicViewModel.Title, comicViewModel.IssueNumber);
+                comic.Grade = ComicsData.GetGradeById(comicViewModel.GradeId.Value);
                 ComicsData.Add(comic);
+                //return RedirectToAction("Index", new { name = "blake" });
                 return Redirect("/Comics");
             }
             // Bad news, stuff is not right
             // Stay, so the user can finish form
-            return View();
+            return View(comicViewModel);
         }
 
         [HttpPost]

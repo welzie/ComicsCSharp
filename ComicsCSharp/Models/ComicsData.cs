@@ -8,6 +8,22 @@ namespace ComicsCSharp.Models
     public class ComicsData
     {
         private static List<Comic> comics = new List<Comic>();
+        private static List<Grade> grades = new List<Grade>()
+        {
+            new Grade("Mint", 1),
+            new Grade("Fair", 2),
+            new Grade("Poor", 3),
+        };
+
+        public static List<Grade> GetAllGrades()
+        {
+            return grades;
+        }
+
+        public static Grade GetGradeById(int id)
+        {
+            return grades.Find(grade => grade.GradeId == id);
+        }
 
         public static List<Comic> GetAll()
         {

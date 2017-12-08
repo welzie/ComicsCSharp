@@ -9,7 +9,7 @@ namespace ComicsCSharp.Models
         public string Title { get; set; }
         public int? IssueNumber { get; set; }
         private static int nextId = 0;
-        public int? Grade { get; set; }
+        public Grade Grade { get; set; }
 
         public Comic()
         {

@@ -6,7 +6,7 @@
 <form method="post" action="/Comics/add">
     <label asp-for="IssueNumber"></label> <input asp-for="IssueNumber"/>
     <label asp-for="Title"></label> <input asp-for="Title"/>
-    <select asp-for="Grade" asp-items="Model.SelectItems">
+    <select asp-for="GradeId" asp-items="Model.SelectItems">
         <option value="">*select one*</option>
     </select>
     
